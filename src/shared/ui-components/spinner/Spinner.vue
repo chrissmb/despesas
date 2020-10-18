@@ -1,0 +1,109 @@
+<template>
+  <div :class="'spinner ' + color" :style="{width: sizePx, height: sizePx}"></div>
+</template>
+
+<script>
+export default {
+  name: "spinner",
+  props: {
+    color: String,
+    size: {
+      type: String,
+      default: "25"
+    }
+  },
+  computed: {
+    sizePx() {
+      return this.size + "px";
+    }
+  }
+};
+</script>
+
+<style scoped>
+@import url("https://fonts.googleapis.com/css?family=Roboto:300");
+
+* {
+  font-family: "Roboto", sans-serif;
+}
+
+.spinner {
+  display: inline-block;
+  border: solid black;
+  border-width: 5px 5px 5px 5px;
+  border-right-color: transparent;
+  vertical-align: text-bottom;
+  border-radius: 50%;
+  -webkit-animation: spin 0.75s linear infinite;
+  -moz-animation: spin 0.75s linear infinite;
+  -o-animation: spin 0.75s linear infinite;
+  animation: spin 0.75s linear infinite;
+}
+
+@-webkit-keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@-moz-keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@-o-keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Colors ***********************/
+.blue {
+  border-color: #48f;
+  border-right-color: transparent;
+}
+
+.green {
+  border-color: #2ba;
+  border-right-color: transparent;
+}
+
+.red {
+  border-color: #f34;
+  border-right-color: transparent;
+}
+
+.purple {
+  border-color: #a6c;
+  border-right-color: transparent;
+}
+
+.orange {
+  border-color: #f82;
+  border-right-color: transparent;
+}
+
+.white {
+  border-color: #fff;
+  border-right-color: transparent;
+}
+</style>
