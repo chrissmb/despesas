@@ -51,7 +51,7 @@ export default {
   },
   mounted() {
     this.responsividade(window.innerWidth);
-    window.addEventListener("resize", e =>
+    window.addEventListener("resize", () =>
       this.responsividade(window.innerWidth)
     );
   }

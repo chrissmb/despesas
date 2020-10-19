@@ -1,6 +1,6 @@
 <template>
   <div>
-    <btn type="success" @click="openForm">Criar despesa</btn>
+    <btn type="success" @click="openForm">&#43; Criar despesa</btn>
 
     <grid>
       <template v-slot:columns>

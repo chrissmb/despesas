@@ -35,15 +35,6 @@ export class AuthService {
     return auth.signInWithEmailAndPassword(email, senha);
   }
 
-  testeAsync() {
-    return new Promise((res, rej) => {
-      setTimeout(() => {
-        console.log('teste123');
-        res(1);
-      }, 3000);
-    });
-  }
-
   autenticarGoogle() {
     return auth.signInWithPopup(provider);
   }
