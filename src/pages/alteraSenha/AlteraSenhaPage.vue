@@ -1,24 +1,29 @@
 <template>
   <div>
-    <div>
-      <textfield
-        label="Senha atual"
-        type="password"
-        v-model="cadastro.senhaAtual"
-      ></textfield>
+    <div v-if="eContaGoogle">
+      Usuário autenticado pelo Google não pode alterar a senha aqui.
     </div>
-    <textfield
-      label="Nova senha"
-      type="password"
-      v-model="cadastro.senha"
-      :msgValidate="errosSenha"
-    ></textfield>
-    <textfield
-      label="Confirmar senha"
-      type="password"
-      v-model="cadastro.repeteSenha"
-    ></textfield>
-    <btn @click="alteraSenha" :disabled="!eValido">Alterar</btn>
+    <div v-if="!eContaGoogle">
+      <div>
+        <textfield
+          label="Senha atual"
+          type="password"
+          v-model="cadastro.senhaAtual"
+        ></textfield>
+      </div>
+      <textfield
+        label="Nova senha"
+        type="password"
+        v-model="cadastro.senha"
+        :msgValidate="errosSenha"
+      ></textfield>
+      <textfield
+        label="Confirmar senha"
+        type="password"
+        v-model="cadastro.repeteSenha"
+      ></textfield>
+      <btn @click="alteraSenha" :disabled="!eValido">Alterar</btn>
+    </div>
   </div>
 </template>
 
@@ -38,7 +43,6 @@ export default {
   components: { Textfield, Btn },
   data() {
     return {
-      eContaGoogle: false,
       cadastro: {
         senhaAtual: "",
         senha: "",
@@ -76,9 +80,11 @@ export default {
     eValido() {
       return this.errosSenha.length === 0;
     },
+    eContaGoogle() {
+      return authService.eContaGoogle();
+    }
   },
   mounted() {
-    this.eContaGoogle = authService.eContaGoogle();
     asyncSpinnerService.root = this.$root;
     messageBoxService.root = this.$root;
   },

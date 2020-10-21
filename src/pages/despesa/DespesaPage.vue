@@ -31,7 +31,7 @@
               type="error"
               style="padding: 2px 10px"
               @click="deleteDespesa(despesa)"
-              >&#128465;</btn
+              ><img src="../../static/img/trash_white.png" width="20" height="20"></btn
             >
           </td>
         </tr>
