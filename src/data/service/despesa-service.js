@@ -24,7 +24,7 @@ export class DespesaService {
         valorTotal: [
           {
             isInvalid:
-              !despesa.valorTotal || !Number.isFinite(despesa.valorTotal),
+              !despesa.valorTotal || despesa.valorTotal <= 0,
             msg: 'Valor Total dever ser um valor acima de 0.'
           }
         ],

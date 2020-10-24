@@ -81,7 +81,14 @@ export default {
     },
     updateValue() {
       this.dirty = true;
-      this.$emit("input", Number(this.$refs.refCampo.value));
+      this.$emit("input", this.getNumberValue(this.$refs.refCampo.value));
+    },
+    getNumberValue(str) {
+      if(str == null || str === '') {
+        return null;
+      } else {
+        return Number(str);
+      }
     }
   }
 };

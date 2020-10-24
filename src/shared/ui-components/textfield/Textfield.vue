@@ -87,7 +87,13 @@ export default {
     },
     updateValue() {
       this.dirty = true;
-      this.$emit("input", this.$refs.refCampo.value);
+      this.$emit("input", this.getText(this.$refs.refCampo.value));
+    },
+    getText(str) {
+      if (str && this.type !== "password") {
+        return str.trim();
+      }
+      return str;
     },
   },
 };
