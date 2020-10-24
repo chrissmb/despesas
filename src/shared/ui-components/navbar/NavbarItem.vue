@@ -23,7 +23,7 @@
           :to="subItem.disabled == true ? 'unknown' : subItem.link"
           :class="{ disabled: subItem.disabled }"
           :key="subItem.label"
-          ><span @click="clickIn()">{{ subItem.label }} {{subItem.disabled}}</span></router-link
+          ><span @click="clickIn()">{{ subItem.label }}</span></router-link
         >
       </div>
     </div>
