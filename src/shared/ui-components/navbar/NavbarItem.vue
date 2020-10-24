@@ -6,14 +6,11 @@
     <router-link
       v-if="item.dropdown == null && !item.disabled"
       :to="item.link"
-      routerLinkActive="active"
       ><span @click="clickIn()">{{ item.label }}</span></router-link
     >
 
     <a v-if="item.disabled" class="disabled">{{ item.label }}</a>
 
-    <!-- [routerLinkActiveOptions]="{ exact: false, __change_detection_hack__: id }" -->
-    <!-- [class.active]="isActive(item.link)" -->
     <div v-if="item.dropdown != null && !item.disabled">
       <a href="javascript:void(0)" @click="clickIn()">
         {{ item.label }}
@@ -23,11 +20,10 @@
       <div class="dropdown-content" :class="{ show: show }">
         <router-link
           v-for="subItem in item.dropdown"
-          :to="subItem.link"
-          routerLinkActive="active"
+          :to="subItem.disabled == true ? 'unknown' : subItem.link"
           :class="{ disabled: subItem.disabled }"
           :key="subItem.label"
-          ><span @click="clickIn()">{{ subItem.label }}</span></router-link
+          ><span @click="clickIn()">{{ subItem.label }} {{subItem.disabled}}</span></router-link
         >
       </div>
     </div>
@@ -104,12 +100,12 @@ export default {
   font-weight: 100;
 }
 
-.navbar a:hover:not(.active):not(.disabled),
-.navbar router-link:hover:not(.active):not(.disabled) {
+.navbar a:hover:not(.router-link-active):not(.disabled),
+.navbar router-link:hover:not(.router-link-active):not(.disabled) {
   color: #ddd;
 }
 
-.navbar .active {
+.navbar .router-link-active {
   background-color: rgba(255, 255, 255, 0.1);
   color: white;
   pointer-events: none;
@@ -157,7 +153,7 @@ export default {
   text-decoration: none;
 }
 
-.sidebar .active {
+.sidebar .router-link-active {
   background-color: rgba(255, 255, 255, 0.1);
   color: white;
   pointer-events: none;
@@ -178,8 +174,8 @@ export default {
   -webkit-touch-callout: none;
 }
 
-.sidebar a:hover:not(.active):not(.disabled),
-.sidebar router-link:hover:not(.active):not(.disabled) {
+.sidebar a:hover:not(.router-link-active):not(.disabled),
+.sidebar router-link:hover:not(.router-link-active):not(.disabled) {
   color: #ddd;
 }
 
@@ -196,6 +192,9 @@ export default {
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 20;
 }
+.navbar .right .dropdown-content {
+  right: 0;
+}
 
 .navbar .dropdown-content.show {
   display: block;
@@ -211,12 +210,12 @@ export default {
   margin: 2px;
 }
 
-.dropdown-content .active {
+.dropdown-content .router-link-active {
   color: #48f;
 }
 
-.dropdown-content a:hover:not(.active),
-.dropdown-content router-link:hover:not(.active) {
+.dropdown-content a:hover:not(.router-link-active),
+.dropdown-content router-link:hover:not(.router-link-active) {
   background-color: #eee;
   color: black;
 }

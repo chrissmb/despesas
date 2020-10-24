@@ -32,6 +32,9 @@ export class AuthService {
   }
 
   autenticar(email, senha) {
+    if (email) {
+      email = email.toLowerCase()
+    }
     return auth.signInWithEmailAndPassword(email, senha);
   }
 
