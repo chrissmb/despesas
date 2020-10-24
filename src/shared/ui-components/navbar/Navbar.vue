@@ -13,15 +13,6 @@
 /* eslint no-console: ["error", { allow: ["warn", "error"] }] */
 
 import NavbarItem from "@/shared/ui-components/navbar/NavbarItem";
-//import { auth } from "@/lib/firebase";
-//import { renderDropDown } from "@/lib/jqRender";
-
-// import FontAwesomeIcon from "@fortawesome/vue-fontawesome";
-// import {
-//   faEdit,
-//   faDollarSign,
-//   faUser
-// } from "@fortawesome/fontawesome-free-solid";
 
 export default {
   name: "navbar",

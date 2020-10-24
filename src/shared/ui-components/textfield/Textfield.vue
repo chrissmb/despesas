@@ -1,21 +1,24 @@
 <template>
-  <div class="container" :style="{ width: largura }">
-    <label>{{ label }}</label>
-    <input
-      :type="type"
-      :placeholder="placeholder"
-      :value="value"
-      :title="getMsgValidate()"
-      :class="{ error: hasError() }"
-      :maxlength="maxlength"
-      :minlength="minlength"
-      :required="required"
-      :name="name"
-      :disabled="disabled"
-      @input="updateValue()"
-      @keyup.enter="$emit('enter', 1)"
-      ref="refCampo"
-    />
+  <div>
+    <div class="container" :style="{ width: largura }">
+      <label>{{ label }}</label>
+      <input
+        :type="type"
+        :placeholder="placeholder"
+        :value="value"
+        :title="getMsgValidate()"
+        :class="{ error: hasError() }"
+        :maxlength="maxlength"
+        :minlength="minlength"
+        :required="required"
+        :name="name"
+        :disabled="disabled"
+        @input="updateValue()"
+        @keyup.enter="$emit('enter', 1)"
+        ref="refCampo"
+      />
+    </div>
+    <div class="msgValidate">{{ getMsgValidate() }}</div>
   </div>
 </template>
 
@@ -27,38 +30,38 @@ export default {
     label: String,
     mw: {
       type: Number,
-      default: 12,
+      default: 12
     },
     dw: {
       type: Number,
-      default: 6,
+      default: 6
     },
     placeholder: {
       type: String,
-      default: "",
+      default: ""
     },
     type: {
       type: String,
-      default: "text",
+      default: "text"
     },
     msgValidate: Array,
     maxlength: Number,
     minlength: Number,
     required: {
       type: Boolean,
-      default: false,
+      default: false
     },
     name: String,
     disabled: {
       type: Boolean,
-      default: false,
-    },
+      default: false
+    }
   },
   data() {
     return {
       largura: "",
       mobWidth: 600,
-      dirty: false,
+      dirty: false
     };
   },
   mounted() {
@@ -94,8 +97,8 @@ export default {
         return str.trim();
       }
       return str;
-    },
-  },
+    }
+  }
 };
 </script>
 
@@ -130,6 +133,18 @@ input {
 
 .error {
   border-color: red;
+}
+
+.msgValidate {
+  display: none;
+}
+
+/* Mobile **************************/
+@media screen and (max-width: 600px) {
+  .msgValidate {
+    color: red;
+    display: block;
+  }
 }
 </style>
 

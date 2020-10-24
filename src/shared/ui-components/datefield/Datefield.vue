@@ -1,17 +1,21 @@
 <template>
   <div class="container" :style="{ width: largura }">
-    <label>{{ label }}</label>
-    <input
-      type="date"
-      :placeholder="placeholder"
-      :value="value"
-      :title="getMsgValidate()"
-      :required="required"
-      :name="name"
-      :disabled="disabled"
-      @change="updateValue($event)"
-      ref="refCampo"
-    />
+    <div>
+      <label>{{ label }}</label>
+      <input
+        type="date"
+        :placeholder="placeholder"
+        :value="value"
+        :class="{ error: hasError() }"
+        :title="getMsgValidate()"
+        :required="required"
+        :name="name"
+        :disabled="disabled"
+        @change="updateValue($event)"
+        ref="refCampo"
+      />
+    </div>
+    <div class="msgValidate">{{ getMsgValidate() }}</div>
   </div>
 </template>
 
@@ -23,31 +27,32 @@ export default {
     label: String,
     mw: {
       type: Number,
-      default: 12,
+      default: 12
     },
     dw: {
       type: Number,
-      default: 6,
+      default: 6
     },
     placeholder: {
       type: String,
-      default: "",
+      default: ""
     },
     required: {
       type: Boolean,
-      default: false,
+      default: false
     },
     name: String,
     disabled: {
       type: Boolean,
-      default: false,
+      default: false
     },
+    msgValidate: Array
   },
   data() {
     return {
       largura: "",
       mobWidth: 600,
-      dirty: false,
+      dirty: false
     };
   },
   mounted() {
@@ -87,8 +92,8 @@ export default {
       const mes = this.value.getMonth() + 1;
       const ano = this.value.getFullYear();
       return ano + "-" + ("0" + mes).slice(-2) + "-" + ("0" + dia).slice(-2);
-    },
-  },
+    }
+  }
 };
 </script>
 
@@ -123,5 +128,17 @@ input {
 
 .error {
   border-color: red;
+}
+
+.msgValidate {
+  display: none;
+}
+
+/* Mobile **************************/
+@media screen and (max-width: 600px) {
+  .msgValidate {
+    color: red;
+    display: block;
+  }
 }
 </style>

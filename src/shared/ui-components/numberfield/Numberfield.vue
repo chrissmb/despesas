@@ -1,19 +1,22 @@
 <template>
   <div class="container" :style="{width: largura}">
-    <label>{{ label }}</label>
-    <input
-      type="number"
-      :value="value"
-      :title="getMsgValidate()"
-      :class="{error: hasError()}"
-      :max="max"
-      :min="min"
-      :required="required"
-      :name="name"
-      :disabled="disabled"
-      @input="updateValue()"
-      ref="refCampo"
-    >
+    <div>
+      <label>{{ label }}</label>
+      <input
+        type="number"
+        :value="value"
+        :title="getMsgValidate()"
+        :class="{ error: hasError() }"
+        :max="max"
+        :min="min"
+        :required="required"
+        :name="name"
+        :disabled="disabled"
+        @input="updateValue()"
+        ref="refCampo"
+      />
+    </div>
+    <div class="msgValidate">{{ getMsgValidate() }}</div>
   </div>
 </template>
 
@@ -84,7 +87,7 @@ export default {
       this.$emit("input", this.getNumberValue(this.$refs.refCampo.value));
     },
     getNumberValue(str) {
-      if(str == null || str === '') {
+      if (str == null || str === "") {
         return null;
       } else {
         return Number(str);
@@ -125,6 +128,18 @@ input {
 
 .error {
   border-color: red;
+}
+
+.msgValidate {
+  display: none;
+}
+
+/* Mobile **************************/
+@media screen and (max-width: 600px) {
+  .msgValidate {
+    color: red;
+    display: block;
+  }
 }
 </style>
 
