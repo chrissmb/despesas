@@ -1,6 +1,6 @@
 <template>
   <div>
-    <btn type="success" @click="openForm">&#43; Criar despesa</btn>
+    <btn type="success" @click="openForm"><icon name="plus"/> Criar despesa</btn>
 
     <grid>
       <template v-slot:columns>
@@ -31,7 +31,7 @@
               type="error"
               style="padding: 2px 10px"
               @click="deleteDespesa(despesa)"
-              ><img src="../../static/img/trash_white.png" width="20" height="20"></btn
+              ><icon name="trash"/></btn
             >
           </td>
         </tr>
@@ -43,6 +43,7 @@
 <script>
 import Grid from "@/shared/ui-components/grid/Grid";
 import Btn from "@/shared/ui-components/btn/Btn";
+import Icon from "@/shared/icon/Icon";
 import { DespesaService } from "@/data/service/despesa-service";
 import { AuthService } from "@/core/service/auth-service";
 import { Despesa } from "@/data/schema/despesa";
@@ -57,7 +58,7 @@ const authService = new AuthService();
 
 export default {
   name: "DespesaPage",
-  components: { Grid, Btn },
+  components: { Grid, Btn, Icon },
   data() {
     return {
       despesa: new Despesa(),

@@ -30,9 +30,10 @@
       :min="1"
     />
     <div>
-      <btn type="error" @click="voltar()">Voltar</btn>
+      <btn type="error" @click="voltar()"
+        ><icon name="undo" /> Voltar</btn>
       <btn type="success" @click="saveDespesa()" :disabled="!isValid"
-        >&#128190; Salvar</btn
+        ><icon name="floppy" /> Salvar</btn
       >
     </div>
   </div>
@@ -44,6 +45,7 @@ import Numberfield from "@/shared/ui-components/numberfield/Numberfield";
 import Datefield from "@/shared/ui-components/datefield/Datefield";
 import Btn from "@/shared/ui-components/btn/Btn";
 import Checkbox from "@/shared/ui-components/checkbox/Checkbox";
+import Icon from '@/shared/icon/Icon';
 import { Despesa } from "@/data/schema/despesa";
 import { DespesaService } from "@/data/service/despesa-service";
 import { AsyncSpinnerService } from "@/shared/ui-components/spinner/async-spinner-service";
@@ -61,6 +63,7 @@ export default {
     Datefield,
     Btn,
     Checkbox,
+    Icon,
   },
   data() {
     return {

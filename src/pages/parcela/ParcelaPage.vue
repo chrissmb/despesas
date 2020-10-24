@@ -2,7 +2,7 @@
   <div>
     <datefield v-model="dataDe" label="De" :dw="5" />
     <datefield v-model="dataAte" label="Ate" :dw="5" />
-    <btn type="primary" @click="filtrarData">&#128269; Filtrar</btn>
+    <btn type="primary" @click="filtrarData"><icon name="search" /> Filtrar</btn>
     <combobox
       :list="despesas"
       v-model="selectDespesa"
@@ -49,6 +49,7 @@ import Combobox from "@/shared/ui-components/combobox/Combobox";
 import Btn from "@/shared/ui-components/btn/Btn";
 import Checkbox from "@/shared/ui-components/checkbox/Checkbox";
 import Grid from "@/shared/ui-components/grid/Grid";
+import Icon from '@/shared/icon/Icon';
 
 import { DespesaService } from "@/data/service/despesa-service";
 import { ParcelaService } from "@/data/service/parcela-service";
@@ -70,6 +71,7 @@ export default {
     Btn,
     Checkbox,
     Grid,
+    Icon,
   },
   data() {
     return {

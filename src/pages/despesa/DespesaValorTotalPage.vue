@@ -5,9 +5,10 @@
       v-model="despesa.valorTotal"
       :msgValidate="errosValorTotal"
     />
-    <btn type="error" @click="voltar">voltar</btn>
+    <btn type="error" @click="voltar"
+      ><icon name="undo" />voltar</btn>
     <btn type="success" @click="alteraValorTotal" :disabled="!isValid"
-      >&#128190; Salvar</btn
+      ><icon name="floppy" /> Salvar</btn
     >
   </div>
 </template>
@@ -15,6 +16,7 @@
 <script>
 import Numberfield from "@/shared/ui-components/numberfield/Numberfield";
 import Btn from "@/shared/ui-components/btn/Btn";
+import Icon from '@/shared/icon/Icon';
 import { DespesaService } from "@/data/service/despesa-service";
 import { AsyncSpinnerService } from "@/shared/ui-components/spinner/async-spinner-service";
 import { MessageBoxService } from "@/shared/ui-components/modal/message-box-service.js";
@@ -28,6 +30,7 @@ export default {
   components: {
     Numberfield,
     Btn,
+    Icon,
   },
   data() {
     return {
