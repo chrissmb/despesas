@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <div class="container" :style="{ width: largura }">
+  <div class="container" :style="{ width: largura }">
+    <div>
       <label>{{ label }}</label>
       <input
         :type="type"
